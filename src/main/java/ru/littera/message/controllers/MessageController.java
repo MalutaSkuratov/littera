@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.littera.message.models.Message;
 
@@ -26,6 +27,13 @@ public class MessageController {
         message.setId(++nextId);
         messages.add(message);
         return "redirect:/";
+    }
+
+    @PostMapping("/messages/delete/{id}")
+    private String deleteMessage(@PathVariable Long id){
+        messages.removeIf(message -> message.getId().equals(id));
+        return "redirect:/";
+
     }
 
 

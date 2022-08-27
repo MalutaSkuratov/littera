@@ -6,7 +6,12 @@
 <body>
 <h2>L I T T E R A</h2><hr>
 <#list messages as message>
-    <p><b>${message.title}</b>: ${message.message} | <i>${message.author}</i></p>
+    <p><b>${message.title}</b>:
+        ${message.message} |
+        <i>${message.author}</i></p>
+    <form action="/messages/delete/${message.id}" method="post">
+        <button type="submit">Delete</button>
+    </form>
     <#else>
     <h3>Nothing messages</h3>
 </#list>
