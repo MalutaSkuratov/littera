@@ -2,12 +2,14 @@ package ru.littera.message.models;
 
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "messages")
+@NoArgsConstructor
 public class Message {
 
     @Id
@@ -17,4 +19,9 @@ public class Message {
     private String message;
     private String author;
 
+    public Message(String title, String message, String author) {
+        this.title = title;
+        this.message = message;
+        this.author = author;
+    }
 }

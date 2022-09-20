@@ -12,7 +12,7 @@
     <form action="/messages/delete/${message.id}" method="post">
         <button type="submit">Delete</button>
     </form>
-    <#else>
+<#else>
     <h3>Nothing messages</h3>
 </#list>
 <hr>
