@@ -1,20 +1,22 @@
 package ru.littera.message.configurations;
 
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import ru.littera.message.services.CustomUserDetailsServices;
 
 
-@Configuration
 @EnableWebSecurity  // @Configuration внутри
+@RequiredArgsConstructor
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    private final CustomUserDetailsServices userDetailsServices;
+    private final PasswordEncoder passwordEncoder;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -28,22 +30,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout().permitAll(); // Выход из аккаунта
     }
 
-    @Bean
     @Override
-    public UserDetailsService userDetailsService(){
-        UserDetails user = User.withDefaultPasswordEncoder()
-                .username("user")
-                .password("123")
-                .roles("USER")
-                .build();
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsServices)
+                .passwordEncoder(passwordEncoder);
 
-        return new InMemoryUserDetailsManager(user); // 23:10 Security
     }
-
-
-
-
-
 }
 
 

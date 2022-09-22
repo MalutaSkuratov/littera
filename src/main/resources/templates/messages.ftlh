@@ -18,9 +18,9 @@
 <hr>
 <h3>Add message</h3>
 <form action="/messages/new" method="post">
-    Title: <input type="text" name="title"><br><br>
-    Message: <input type="text" name="message"><br><br>
-    Author: <input type="text" name="author"><br><br>
+    Тема: <input type="text" name="title"><br><br>
+    Сообщение: <input type="text" name="message"><br><br>
+    Автор: <input type="text" name="author"><br><br>
     <button type="submit">Create</button>
 </form>
 </body>

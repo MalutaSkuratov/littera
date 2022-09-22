@@ -10,6 +10,8 @@ public class MvcConfiguration implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login") // Без взаимодействия с контроллером отображает шаблон
                 .setViewName("login");
+        registry.addViewController("/registration") // Без взаимодействия с контроллером отображает шаблон
+                .setViewName("registration");
     }
     // Конфигурирует контроллеры. Отображает шаблон
 }
