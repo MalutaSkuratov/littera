@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Littera</title>
-</head>
-<body>
+<#import "parts/common.ftlh" as c>
+<@c.page>
 <h2>Registration</h2><hr>
 
 <hr>
@@ -15,5 +11,4 @@
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
     <button type="submit">Регистрировать</button>
 </form>
-</body>
-</html>
+</@c.page>
