@@ -8,6 +8,9 @@ import ru.littera.message.models.enums.Role;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.*;
 
 @Entity
@@ -40,8 +43,6 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING) // Добавляем Enum в Entity.String - в базе будет хранится имя этого enum'а
     private Set<Role> roles = new HashSet<>();
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Message> messages = new ArrayList<>();
 
     @Column(name = "on_created")
     private LocalDateTime onCreated; // Дата создания пользователя
