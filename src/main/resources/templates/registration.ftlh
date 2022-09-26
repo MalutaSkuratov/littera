@@ -9,6 +9,6 @@
     Никнейм: <input type="text" name="username"><br><br>
     Пароль: <input type="password" name="password"><br><br>
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-    <button type="submit">Регистрировать</button>
+    <button type="submit"class="btn btn-dark">Регистрировать</button>
 </form>
 </@c.page>

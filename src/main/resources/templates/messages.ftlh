@@ -1,10 +1,6 @@
 <#import "parts/common.ftlh" as c>
 <@c.page>
-<form action="/logout" method="post">
-    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-    <button type="submit">Logout</button>
-</form>
-<br>
+
 <h2>L I T T E R A</h2><hr>
 <#list messages as message>
     <p><b>${message.title}</b>:
@@ -12,7 +8,7 @@
         <i>${message.author}</i></p>
     <form action="/messages/delete/${message.id}" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <button type="submit">Удалить</button>
+        <button type="submit"class="btn btn-dark">Удалить</button>
     </form>
 <#else>
     <h6>Нет сообщений</h6>
@@ -24,6 +20,6 @@
     Сообщение: <input type="text" name="message"><br><br>
     Автор: <input type="text" name="author"><br><br>
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-    <button type="submit">Опубликовать</button>
+    <button type="submit"class="btn btn-dark">Опубликовать</button>
 </form>
 </@c.page>
